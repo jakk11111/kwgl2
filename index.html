@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ===== Meta Pixel ===== -->
+  <!-- ===== Meta Pixel ===== -->
   <script>
     !(function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -12,29 +12,30 @@
       s.parentNode.insertBefore(t,s)
     })(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1254668502518365');   
+
+    fbq('init', '1254668502518365');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"
-  /></noscript>
+       src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"/></noscript>
   <!-- ===== End Pixel ===== -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KWG GAME</title>
+  <title>KWG GAME</title>
+
   <link rel="stylesheet" href="./style.css" />
-  <link rel="icon" href="./favicon.ico" />
+  <link rel="icon" type="image/png" href="./resources/favicon.png" />
 </head>
-<link rel="icon" type="image/png" href="./resources/favicon.png" />
-<title>KWG GAME</title>
 <body>
-  <div id="header" class="header-img"></div>
 
-  <div class="container" onclick="handleDownloadClick()">
-    
-  </div>
+  <!-- ===== Hero / Main Banner ===== -->
+  <div id="header" class="header-img" onclick="handleDownloadClick()"></div>
 
+  <!-- ===== Invisible Click‑Zone on top of banner (optional) ===== -->
+  <div class="container" onclick="handleDownloadClick()"></div>
+
+  <!-- ===== Game Gallery ===== -->
   <section class="games">
     <img src="./resources/g1.jpg" alt="">
     <img src="./resources/g2.jpg" alt="">
@@ -47,6 +48,7 @@
     <img src="./resources/g9.jpg" alt="">
   </section>
 
+  <!-- ===== Social Proof ===== -->
   <section class="reviews">
     <div class="review">
       <img src="./resources/e1.png" alt="">
@@ -65,52 +67,59 @@
     </div>
   </section>
 
+  <!-- ===== WhatsApp CTA ===== -->
   <a id="waBtn" class="whatsapp-btn"
      href="https://ok359.top/j/aUanjnCB9047?text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
      target="_blank" rel="noopener"></a>
 
-  <script src="./main.js"></script>
- <div class="bottom-download" onclick="handleDownloadClick()">
-<div class="cta-callout">
-  <div class="arrow"></div>
-  <span class="cta-msg">
-    ⏰ <span id="countdown">03:00</span> left – Claim ₹500 bonus!
-  </span>
-</div>
+  <!-- ===== Bottom Sticky Download CTA ===== -->
+  <div class="bottom-download" onclick="handleDownloadClick()">
+    <div class="cta-callout">
+      <div class="arrow"></div>
+      <span class="cta-msg">
+        ⏰ <span id="countdown">03:00</span> left – Claim ₹500 bonus!
+      </span>
+    </div>
 
-<div class="bottom-download">
-  <span class="bottom-text rainbow">Tap to Download APK</span>
+    <span class="bottom-text rainbow">Tap to Download APK</span>
+    <span class="bottom-btn">DOWNLOAD</span>
+  </div>
 
-  <a id="bottomBtn"
-     class="bottom-btn"
-     href="https://sju01.piouyh15.biz?pixelId=1254668502518365"
-     data-apk="https://sju01.piouyh15.biz?pixelId=1254668502518365">
-     DOWNLOAD
-  </a>
-  
-<script>
+  <script>
+  // ===== Shared target URL =====
+  const APK_URL = 'https://sju01.piouyh15.biz?pixelId=1254668502518365';
 
-(function () {
-  const cd = document.getElementById('countdown');
-  if (!cd) return;            
-
-  let t = 3 * 60;             
-
-  function tick () {
-    if (t <= 0) {
-      cd.textContent = '00:00';      
-      return;
+  /**
+   * Fires a 'Purchase' event to the Meta Pixel and
+   * immediately redirects the user to the APK download.
+   */
+  function handleDownloadClick () {
+    // Meta Pixel event
+    if (typeof fbq === 'function') {
+      fbq('track', 'Purchase', {currency: 'INR', value: 0.00});
     }
-    t--;
-    const min = String(Math.floor(t / 60)).padStart(2, '0');
-    const sec = String(t % 60).padStart(2, '0');
-    cd.textContent = `${min}:${sec}`;
+    // Redirect
+    window.location.href = APK_URL;
   }
 
-  tick();                     
-  setInterval(tick, 1000);    
-})();
-</script>
+  // ===== Three‑minute urgency timer =====
+  (function () {
+    const cd = document.getElementById('countdown');
+    if (!cd) return;
 
+    let t = 3 * 60; // 3 min in seconds
+
+    const tick = () => {
+      if (t <= 0) { cd.textContent = '00:00'; return; }
+      t--;
+      cd.textContent =
+        String(Math.floor(t / 60)).padStart(2, '0') + ':' +
+        String(t % 60).padStart(2, '0');
+    };
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+  </script>
 </body>
 </html>
