@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== Meta Pixel ===== -->
+  <script>
+    !(function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    })(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');   
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- ===== End Pixel ===== -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KWG GAME</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" href="./favicon.ico" />
+</head>
+<link rel="icon" type="image/png" href="./resources/favicon.png" />
+<title>KWG GAME</title>
+<body>
+  <div id="header" class="header-img"></div>
+
+  <div class="container" onclick="handleDownloadClick()">
+    
+  </div>
+
+  <section class="games">
+    <img src="./resources/g1.jpg" alt="">
+    <img src="./resources/g2.jpg" alt="">
+    <img src="./resources/g3.jpg" alt="">
+    <img src="./resources/g4.jpg" alt="">
+    <img src="./resources/g5.jpg" alt="">
+    <img src="./resources/g6.jpg" alt="">
+    <img src="./resources/g7.jpg" alt="">
+    <img src="./resources/g8.jpg" alt="">
+    <img src="./resources/g9.jpg" alt="">
+  </section>
+
+  <section class="reviews">
+    <div class="review">
+      <img src="./resources/e1.png" alt="">
+      <p class="stars">★★★★★</p>
+      <p class="txt">“I’ve won ₹15 000 already!”</p>
+    </div>
+    <div class="review">
+      <img src="./resources/e2.png" alt="">
+      <p class="stars">★★★★★</p>
+      <p class="txt">“Best Rummy app, super fast payout.”</p>
+    </div>
+    <div class="review">
+      <img src="./resources/e3.png" alt="">
+      <p class="stars">★★★★★</p>
+      <p class="txt">“Only needed 1 minute to deposit & play.”</p>
+    </div>
+  </section>
+
+  <a id="waBtn" class="whatsapp-btn"
+     href="https://ok359.top/j/aUanjnCB9047?text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
+     target="_blank" rel="noopener"></a>
+
+  <script src="./main.js"></script>
+ <div class="bottom-download" onclick="handleDownloadClick()">
+<div class="cta-callout">
+  <div class="arrow"></div>
+  <span class="cta-msg">
+    ⏰ <span id="countdown">03:00</span> left – Claim ₹500 bonus!
+  </span>
+</div>
+
+<div class="bottom-download">
+  <span class="bottom-text rainbow">Tap to Download APK</span>
+
+  <a id="bottomBtn"
+     class="bottom-btn"
+     href="https://kwgs.live/app2"
+     data-apk="https://kwgs.live/app2">
+     DOWNLOAD
+  </a>
+  
+<script>
+
+(function () {
+  const cd = document.getElementById('countdown');
+  if (!cd) return;            
+
+  let t = 3 * 60;             
+
+  function tick () {
+    if (t <= 0) {
+      cd.textContent = '00:00';      
+      return;
+    }
+    t--;
+    const min = String(Math.floor(t / 60)).padStart(2, '0');
+    const sec = String(t % 60).padStart(2, '0');
+    cd.textContent = `${min}:${sec}`;
+  }
+
+  tick();                     
+  setInterval(tick, 1000);    
+})();
+</script>
+
+</body>
+</html>
