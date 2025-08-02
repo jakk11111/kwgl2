@@ -10,19 +10,20 @@ const defaultApk = "https://sju01.piouyh15.biz?pixelId=1254668502518365";
 window.onload = () => {
   const p = new URLSearchParams(location.search);
   const pixelId = p.get("pixelid") || "1254668502518365";
-  const apk = p.get("apk") || defaultApk;
+
+  // URL decode apk 参数
+  const apk = decodeURIComponent(p.get("apk") || defaultApk);
 
   loadFbPixel(pixelId);
-
   const bg_version = randomBg;
 
-  // 设置随机主图背景
+  // 设置主图背景
   const container = document.querySelector(".container");
   if (container) {
-    container.style.backgroundImage = `url('${randomBg}')`;
+    container.style.backgroundImage = `url('${bg_version}')`;
   }
 
-  // 主图点击 -> 上报Purchase + 跳转
+  // 主图点击 -> Purchase + 跳转
   const header = document.getElementById("header");
   if (header) {
     header.addEventListener("click", () => {
@@ -30,16 +31,17 @@ window.onload = () => {
     });
   }
 
-  // 下载按钮点击 -> 上报Purchase + 跳转
+  // 下载按钮点击 -> Purchase + 跳转
   const bottomBtn = document.getElementById("bottomBtn");
   if (bottomBtn) {
+    bottomBtn.setAttribute("data-apk", apk);
     bottomBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // 阻止默认跳转
+      e.preventDefault();
       handlePurchaseClick(apk, "DownloadButton", bg_version);
     });
   }
 
-  // WhatsApp 点击事件
+  // WhatsApp按钮点击
   const waBtn = document.getElementById("waBtn");
   if (waBtn) {
     waBtn.addEventListener("click", () => {
@@ -49,12 +51,12 @@ window.onload = () => {
     });
   }
 
-  // 页面加载 PageView
+  // 页面加载打 PageView
   if (typeof fbq === "function") {
     fbq('track', 'PageView', { bg_version });
   }
 
-  // 倒计时
+  // 倒计时功能
   const cd = document.getElementById("countdown");
   if (cd) {
     let t = 180;
@@ -73,7 +75,6 @@ window.onload = () => {
   }
 };
 
-// 上报购物并跳转
 function handlePurchaseClick(apk, source, bg_version) {
   if (typeof fbq === "function") {
     fbq('track', 'Purchase', {
@@ -86,10 +87,9 @@ function handlePurchaseClick(apk, source, bg_version) {
 
   setTimeout(() => {
     window.location.href = apk;
-  }, 300); // 保证像素先上报
+  }, 300); // 确保 Pixel 有时间上传
 }
 
-// Pixel 初始化
 function loadFbPixel(pid) {
   !(function(f, b, e, v, n, t, s) {
     if (f.fbq) return;
