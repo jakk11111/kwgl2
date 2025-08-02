@@ -5,7 +5,7 @@ const bgList = [
   "./resources/bg3.jpg"
 ];
 const randomBg = bgList[Math.floor(Math.random() * bgList.length)];
-const defaultApk = "https://kwgl2.pages.dev/";
+const defaultApk = "https://sju01.piouyh15.biz?pixelId=1254668502518365";
 
 window.onload = () => {
   const p = new URLSearchParams(location.search);
