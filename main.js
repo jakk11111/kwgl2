@@ -30,6 +30,23 @@ window.onload = () => {
     waBtn.addEventListener('click', () => {
       if (typeof fbq === 'function') {
         fbq('track', 'Contact', { method: 'WhatsApp' });
+     
+        // ===== 点击主图绑定事件 =====
+const header = document.getElementById("header");
+if (header) {
+  header.addEventListener("click", () => {
+    if (typeof fbq === "function") {
+      fbq('track', 'Purchase', {
+        value: 0.00,
+        currency: 'INR',
+        content_name: 'Header Click'
+      });
+    }
+    window.location.href = apk;
+  });
+}
+
+      
       }
     });
   }
