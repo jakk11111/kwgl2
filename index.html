@@ -17,7 +17,6 @@
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"/></noscript>
-  <!-- ===== End Pixel ===== -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,9 +26,10 @@
 </head>
 
 <body>
-  <!-- ✅ 主图不再使用 onclick，事件交由 JS 绑定 -->
+  <!-- ✅ 主图：点击触发 Purchase -->
   <div id="header" class="header-img"></div>
 
+  <!-- ✅ 主图下方容器（不回传事件） -->
   <div class="container"></div>
 
   <section class="games">
@@ -66,7 +66,8 @@
      href="https://link.xinghe.me/tq3kmbs7?text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
      target="_blank" rel="noopener"></a>
 
-  <div class="bottom-download" onclick="handleDownloadClick()">
+  <!-- ✅ 下载按钮区域 -->
+  <div class="bottom-download">
     <div class="cta-callout">
       <div class="arrow"></div>
       <span class="cta-msg">
@@ -78,14 +79,13 @@
       <span class="bottom-text rainbow">Tap to Download APK</span>
       <a id="bottomBtn"
          class="bottom-btn"
-         href="https://sju01.piouyh15.biz?pixelId=1254668502518365"
-         data-apk="https://sju01.piouyh15.biz?pixelId=1254668502518365">
+         href="javascript:void(0);">
          DOWNLOAD
       </a>
     </div>
   </div>
 
-  <!-- ✅ JS 统一从 main.js 加载 -->
+  <!-- ✅ 主逻辑脚本 -->
   <script src="./main.js"></script>
 </body>
 </html>
