@@ -1,9 +1,9 @@
 /* ===== 随机主图 ===== */
 const bgList = [
-  './resources/bg.jpg',
-  './resources/bg1.jpg',
-  './resources/bg2.jpg',
-  './resources/bg3.jpg'
+  '../resources/bg.jpg',
+  '../resources/bg1.jpg',
+  '../resources/bg2.jpg',
+  '../resources/bg3.jpg'
 ];
 const randomBg = bgList[Math.floor(Math.random() * bgList.length)];
 
