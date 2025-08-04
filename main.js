@@ -1,4 +1,4 @@
-/* ===== 多主图随机 ===== */
+// ===== 多主图随机 =====
 const bgList = [
   "./resources/bg.jpg",
   "./resources/bg1.jpg",
@@ -6,8 +6,6 @@ const bgList = [
   "./resources/bg3.jpg"
 ];
 const randomBg  = bgList[Math.floor(Math.random() * bgList.length)];
-
-/* APK 默认地址 */
 const defaultApk = "https://sju01.piouyh15.biz?pixelId=1254668502518365";
 
 window.onload = () => {
@@ -17,49 +15,27 @@ window.onload = () => {
 
   loadFbPixel(pixelId);
 
+  // 设置 container 背景图（主图）
   const container = document.querySelector(".container");
   if (container) container.style.backgroundImage = `url('${randomBg}')`;
 
-  if (typeof fbq === "function"){
-    fbq('track', 'PageView', {bg_version: randomBg});
+  // PageView 上报
+  if (typeof fbq === "function") {
+    fbq('track', 'PageView', { bg_version: randomBg });
   }
 
-  container.addEventListener("click", () => {
-    if (typeof fbq === "function"){
-      fbq('track', 'Lead', {bg_version: randomBg, content_name:'APK Download'});
-    }
-    window.location.href = apk;
-  });
-
+  // WhatsApp 点击上报
   const waBtn = document.getElementById('waBtn');
   if (waBtn){
     waBtn.addEventListener('click', () => {
-      if (typeof fbq === 'function'){
-        fbq('track', 'Contact', {method: 'WhatsApp'});
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact', { method: 'WhatsApp' });
       }
-    });
-  }
-
-  /* ✅ 新增：点击主图上报购物 + 跳转 */
-  const header = document.getElementById("header");
-  if (header) {
-    header.style.backgroundImage = `url('${randomBg}')`;
-    header.addEventListener("click", () => {
-      if (typeof fbq === "function") {
-        fbq('track', 'Purchase', {
-          value: 0.00,
-          currency: 'INR',
-          bg_version: randomBg,
-          content_name: 'Header Click'
-        });
-      }
-      window.location.href = apk;
     });
   }
 };
 
-
-/* ===== Pixel 封装 ===== */
+// ===== Pixel 封装 =====
 function loadFbPixel(pid){
   !(function(f,b,e,v,n,t,s){
     if(f.fbq)return; n=f.fbq=function(){n.callMethod?
