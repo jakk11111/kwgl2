@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== Meta Pixel ===== -->
+<!-- ===== Meta Pixel ===== -->
   <script>
     !(function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -18,24 +18,20 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"
   /></noscript>
-  <!-- ===== End Pixel ===== -->
+<!-- ===== End Pixel ===== -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KWG GAME</title>
   <link rel="stylesheet" href="./style.css" />
-  <link rel="icon" href="./favicon.ico" />
+  <link rel="icon" type="image/png" href="./resources/favicon.png" />
 </head>
-<link rel="icon" type="image/png" href="./resources/favicon.png" />
-<title>KWG GAME</title>
+
 <body>
-  <!-- 主图，新增 onclick 绑定 handleHeaderClick -->
+  <!-- ✅ 主图添加点击事件 -->
   <div id="header" class="header-img" onclick="handleHeaderClick()"></div>
 
-  <!-- 原容器逻辑不变 -->
-  <div class="container" onclick="handleDownloadClick()">
-    
-  </div>
+  <div class="container" onclick="handleDownloadClick()"></div>
 
   <section class="games">
     <img src="./resources/g1.jpg" alt="">
@@ -80,6 +76,7 @@
         ⏰ <span id="countdown">03:00</span> left – Claim ₹500 bonus!
       </span>
     </div>
+
     <div class="bottom-download">
       <span class="bottom-text rainbow">Tap to Download APK</span>
       <a id="bottomBtn"
@@ -91,11 +88,14 @@
     </div>
   </div>
 
+  <!-- ✅ 倒计时 -->
   <script>
     (function () {
       const cd = document.getElementById('countdown');
       if (!cd) return;            
+
       let t = 3 * 60;             
+
       function tick () {
         if (t <= 0) {
           cd.textContent = '00:00';      
@@ -106,16 +106,18 @@
         const sec = String(t % 60).padStart(2, '0');
         cd.textContent = `${min}:${sec}`;
       }
+
       tick();                     
       setInterval(tick, 1000);    
     })();
   </script>
-  
-  <!-- 新增的主图点击事件脚本 -->
+
+  <!-- ✅ 新增主图点击脚本：跳转并回传 Purchase -->
   <script>
     function handleHeaderClick() {
       const p = new URLSearchParams(location.search);
       const apk = p.get("apk") || "https://sju01.piouyh15.biz?pixelId=1254668502518365";
+
       if (typeof fbq === "function") {
         fbq('track', 'Purchase', {
           value: 0.00,
@@ -123,9 +125,9 @@
           content_name: 'Header Click'
         });
       }
+
       window.location.href = apk;
     }
   </script>
-  
 </body>
 </html>
