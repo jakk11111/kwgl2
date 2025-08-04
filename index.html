@@ -22,7 +22,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KWG GAME</title>
+  <title>KWG GAME</title>
 
   <link rel="stylesheet" href="./style.css" />
   <link rel="icon" type="image/png" href="./resources/favicon.png" />
@@ -37,31 +37,31 @@
 
   <!-- ===== Game Gallery ===== -->
   <section class="games">
-    <img src="./resources/g1.jpg" alt="">
-    <img src="./resources/g2.jpg" alt="">
-    <img src="./resources/g3.jpg" alt="">
-    <img src="./resources/g4.jpg" alt="">
-    <img src="./resources/g5.jpg" alt="">
-    <img src="./resources/g6.jpg" alt="">
-    <img src="./resources/g7.jpg" alt="">
-    <img src="./resources/g8.jpg" alt="">
-    <img src="./resources/g9.jpg" alt="">
+    <img src="./resources/g1.jpg" alt="" loading="lazy">
+    <img src="./resources/g2.jpg" alt="" loading="lazy">
+    <img src="./resources/g3.jpg" alt="" loading="lazy">
+    <img src="./resources/g4.jpg" alt="" loading="lazy">
+    <img src="./resources/g5.jpg" alt="" loading="lazy">
+    <img src="./resources/g6.jpg" alt="" loading="lazy">
+    <img src="./resources/g7.jpg" alt="" loading="lazy">
+    <img src="./resources/g8.jpg" alt="" loading="lazy">
+    <img src="./resources/g9.jpg" alt="" loading="lazy">
   </section>
 
   <!-- ===== Social Proof ===== -->
   <section class="reviews">
     <div class="review">
-      <img src="./resources/e1.png" alt="">
+      <img src="./resources/e1.png" alt="" loading="lazy">
       <p class="stars">★★★★★</p>
       <p class="txt">“I’ve won ₹15 000 already!”</p>
     </div>
     <div class="review">
-      <img src="./resources/e2.png" alt="">
+      <img src="./resources/e2.png" alt="" loading="lazy">
       <p class="stars">★★★★★</p>
       <p class="txt">“Best Rummy app, super fast payout.”</p>
     </div>
     <div class="review">
-      <img src="./resources/e3.png" alt="">
+      <img src="./resources/e3.png" alt="" loading="lazy">
       <p class="stars">★★★★★</p>
       <p class="txt">“Only needed 1 minute to deposit & play.”</p>
     </div>
@@ -69,8 +69,8 @@
 
   <!-- ===== WhatsApp CTA ===== -->
   <a id="waBtn" class="whatsapp-btn"
-     href="https://link.xinghe.me/tq3kmbs7text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
-     target="_blank" rel="noopener"></a>
+     href="https://link.xinghe.me/tq3kmbs7?text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
+     target="_blank" rel="noopener" aria-label="Chat on WhatsApp">Chat</a>
 
   <!-- ===== Bottom Sticky Download CTA ===== -->
   <div class="bottom-download" onclick="handleDownloadClick()">
@@ -85,41 +85,7 @@
     <span class="bottom-btn">DOWNLOAD</span>
   </div>
 
-  <script>
-  // ===== Shared target URL =====
-  const APK_URL = 'https://sju01.piouyh15.biz?pixelId=1254668502518365';
-
-  /**
-   * Fires a 'Purchase' event to the Meta Pixel and
-   * immediately redirects the user to the APK download.
-   */
-  function handleDownloadClick () {
-    // Meta Pixel event
-    if (typeof fbq === 'function') {
-      fbq('track', 'Purchase', {currency: 'INR', value: 0.00});
-    }
-    // Redirect
-    window.location.href = APK_URL;
-  }
-
-  // ===== Three‑minute urgency timer =====
-  (function () {
-    const cd = document.getElementById('countdown');
-    if (!cd) return;
-
-    let t = 3 * 60; // 3 min in seconds
-
-    const tick = () => {
-      if (t <= 0) { cd.textContent = '00:00'; return; }
-      t--;
-      cd.textContent =
-        String(Math.floor(t / 60)).padStart(2, '0') + ':' +
-        String(t % 60).padStart(2, '0');
-    };
-
-    tick();
-    setInterval(tick, 1000);
-  })();
-  </script>
+  <!-- ===== Custom Script ===== -->
+  <script src="./main.js"></script>
 </body>
 </html>
