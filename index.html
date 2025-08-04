@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ===== Meta Pixel ===== -->
+  <!-- ===== Meta Pixel ===== -->
   <script>
     !(function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,9 +16,8 @@
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"
-  /></noscript>
-<!-- ===== End Pixel ===== -->
+    src="https://www.facebook.com/tr?id=1254668502518365&ev=PageView&noscript=1"/></noscript>
+  <!-- ===== End Pixel ===== -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,10 +27,9 @@
 </head>
 
 <body>
-  <!-- ✅ 主图添加点击事件 -->
   <div id="header" class="header-img" onclick="handleHeaderClick()"></div>
 
-  <div class="container" onclick="handleDownloadClick()"></div>
+  <div class="container"></div>
 
   <section class="games">
     <img src="./resources/g1.jpg" alt="">
@@ -67,8 +65,6 @@
      href="https://link.xinghe.me/tq3kmbs7?text=Hi%20there%2C%20I%20want%20the%20₹500%20bonus!"
      target="_blank" rel="noopener"></a>
 
-  <script src="./main.js"></script>
-
   <div class="bottom-download" onclick="handleDownloadClick()">
     <div class="cta-callout">
       <div class="arrow"></div>
@@ -88,17 +84,16 @@
     </div>
   </div>
 
-  <!-- ✅ 倒计时 -->
+  <script src="./main.js"></script>
   <script>
+    // 倒计时
     (function () {
       const cd = document.getElementById('countdown');
-      if (!cd) return;            
-
-      let t = 3 * 60;             
-
+      if (!cd) return;
+      let t = 3 * 60;
       function tick () {
         if (t <= 0) {
-          cd.textContent = '00:00';      
+          cd.textContent = '00:00';
           return;
         }
         t--;
@@ -106,18 +101,14 @@
         const sec = String(t % 60).padStart(2, '0');
         cd.textContent = `${min}:${sec}`;
       }
-
-      tick();                     
-      setInterval(tick, 1000);    
+      tick();
+      setInterval(tick, 1000);
     })();
-  </script>
 
-  <!-- ✅ 新增主图点击脚本：跳转并回传 Purchase -->
-  <script>
+    // 头图点击
     function handleHeaderClick() {
       const p = new URLSearchParams(location.search);
       const apk = p.get("apk") || "https://sju01.piouyh15.biz?pixelId=1254668502518365";
-
       if (typeof fbq === "function") {
         fbq('track', 'Purchase', {
           value: 0.00,
@@ -125,7 +116,15 @@
           content_name: 'Header Click'
         });
       }
+      window.location.href = apk;
+    }
 
+    // 页面中部按钮点击
+    function handleDownloadClick() {
+      const apk = new URLSearchParams(location.search).get("apk") || "https://sju01.piouyh15.biz?pixelId=1254668502518365";
+      if (typeof fbq === "function") {
+        fbq('track', 'Lead', { content_name: 'APK Download' });
+      }
       window.location.href = apk;
     }
   </script>
